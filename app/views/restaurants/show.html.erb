@@ -3,3 +3,21 @@
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
 <p><%= @restaurant.category %></p>
+
+<%= link_to "Delete #{@restaurant.name}",
+            restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<br>
+<%= link_to "go back", restaurants_path %>
+<%= link_to "add review",new_restaurant_review_path(@restaurant) %>
+<ul>
+<% @restaurant.reviews.each do |r| %>
+<li> 
+    <p><%= r.rating %></p> 
+    <p>  <%= r.content %></p>
+</li>
+<%end %>
+</ul>
+
+
